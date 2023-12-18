@@ -15,17 +15,26 @@ interface loginRequest
 function Login()
 {
     return (
-        <html>
-            <div className = 'mainDiv'>
-                <h1 className = 'width: 631px; height: 141px; flex-shrink: 0;'>Ci4</h1>
-                <hr />
-                <br />
-                <LoginForm />
-            </div>
-        </html>
+        <div className="mainDiv">
+          <h1 style ={ci4Style}>Ci4</h1>
+          <br />
+          <LoginForm />
+        </div>
+      );
+    }
 
-    )
-}
+    const ci4Style: React.CSSProperties = {
+        width: '631px',
+        height: '141px',
+        flexShrink: 0,
+        color: '#FFF',
+        textAlign: 'center',
+        fontFamily: 'Do Hyeon',
+        fontSize: '100px',
+        fontStyle: 'normal',
+        fontWeight: 400,
+        lineHeight: 'normal',
+      };
 
 function LoginForm()
 {
