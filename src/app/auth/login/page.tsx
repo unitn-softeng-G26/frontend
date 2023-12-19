@@ -3,8 +3,7 @@ import { getAntdFieldRequiredRule } from '@/app/helpers/validation'
 import { Button, Form } from 'antd'
 import React from 'react'
 import Router from 'next/router';
-
-
+import Image from 'next/image';
 
 interface loginRequest
 {
@@ -12,29 +11,18 @@ interface loginRequest
     password: string;
 }
 
-function Login()
-{
+function Login() {
     return (
         <div className="mainDiv">
-          <h1 style ={ci4Style}>Ci4</h1>
-          <br />
-          <LoginForm />
-        </div>
-      );
-    }
+         
+        <Image src="/ci4_logo_homepage.png" alt='logo ci4' width={128} height={69} />
+        <br />
+        <LoginForm />
+      </div>
+    );
+  }
+  
 
-    const ci4Style: React.CSSProperties = {
-        width: '631px',
-        height: '141px',
-        flexShrink: 0,
-        color: '#FFF',
-        textAlign: 'center',
-        fontFamily: 'Do Hyeon',
-        fontSize: '100px',
-        fontStyle: 'normal',
-        fontWeight: 400,
-        lineHeight: 'normal',
-      };
 
 function LoginForm()
 {
