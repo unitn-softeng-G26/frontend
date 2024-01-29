@@ -106,6 +106,7 @@ function LoginForm()
     //const onLog = (values: loginRequest) => {console.log(values)};
     return (
         <Form className = 'gap-5' itemID = 'loginForm' layout = 'vertical' /*onFinish={onLog}*/>
+            <h1>Hello World</h1>
             <Form.Item name = 'mail'  label = 'mail' rules = {[{required: true, message: 'inserire email'}]}>
                 <input type = 'email' />
             </Form.Item>
