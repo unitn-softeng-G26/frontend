@@ -3,6 +3,7 @@ import React from 'react'
 import Link from 'next/link'
 import {useState, useEffect} from 'react';
 import MyComponent from '@/app/api/MyComponent';
+import '@/app/globals.css';
 
 function ViewLibretto()
 {

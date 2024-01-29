@@ -1,5 +1,6 @@
 import React, {useState } from 'react';
 import axios from 'axios';
+import '@/app/globals.css';
 
 interface appello{
     corso: number, //identificativo corso
@@ -7,8 +8,6 @@ interface appello{
     es: Date, //end subscription
     ed: Date, //exam date
 };
-
-import '@/app/globals.css';
 
 const inseritoreAppelli = () => {
     const [postData, setPostData] = useState<appello[]>([]);

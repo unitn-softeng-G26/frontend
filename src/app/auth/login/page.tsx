@@ -4,6 +4,7 @@ import { Button, Form } from 'antd'
 import React from 'react'
 import Router from 'next/router';
 import Image from 'next/image';
+import '@/app/globals.css';
 
 interface loginRequest
 {
