@@ -16,6 +16,8 @@ function HomePage()
                     <Link href='/GestioneAppelli/VisualizzaAppelli'>Test Gestione appelli</Link>
                     <br />
                     <Link href='/GestioneLibretto/VisualizzaLibretto'>Test Gestione Libretto</Link>
+                    <br />
+                    <Link href='auth\login'>Clicca qui per eseguire l'accesso</Link>
                 </div>
             </body>
         </html>
