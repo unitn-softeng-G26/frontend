@@ -129,7 +129,7 @@ function LoggingIn()
                 password: values.password
                 
             });
-            console.log(response.data);
+            console.log(response.data.token);
             }catch(error)
             {
                 console.error(error);
