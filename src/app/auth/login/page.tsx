@@ -120,7 +120,7 @@ function LoginForm()
         </Form>
     )
 }
-
+/*
 function LoggingIn()
 {
         const onLog = async (values: loginRequest) => {
@@ -135,5 +135,5 @@ function LoggingIn()
                 console.error(error);
             }
         };
-}
+}*/
 export default Login;
