@@ -7,6 +7,7 @@ import Image from 'next/image';
 import axios from 'axios';
 import {useState} from 'react';
 import Input from 'antd/es/input/Input';
+import '@/app/globals.css';
 
 interface loginRequest
 {
