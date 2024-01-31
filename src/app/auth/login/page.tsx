@@ -40,7 +40,7 @@ function LoginForm()
     
     const handleLogin = async () => {
         try{
-            const response = await axios.post('https://corsproxy.io/?https%3A%2F%2Fci4.pesaventofilippo.com%2Fapi%2Fv1%2Flogin', {    username: username,
+            const response = await axios.post('https://ci4.pesaventofilippo.com/api/v1/login', {    username: username,
             password: password
             
             
