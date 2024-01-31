@@ -9,7 +9,6 @@ import {useState} from 'react';
 import Input from 'antd/es/input/Input';
 import { useNavigate } from 'react-router-dom';
 
-
 const Login: React.FC = () => {
     return (
         <div className="mainDiv">
@@ -40,7 +39,7 @@ function LoginForm()
     
     const handleLogin = async () => {
         try{
-            const response = await axios.post('https://ci4.pesaventofilippo.com/api/v1/login', {    username: username,
+            const response = await axios.post('https://corsproxy.io/?https%3A%2F%2Fci4.pesaventofilippo.com%2Fapi%2Fv1%2Flogin', {    username: username,
             password: password
             
             
