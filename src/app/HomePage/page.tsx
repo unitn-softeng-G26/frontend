@@ -2,21 +2,21 @@
 import { getAntdFieldRequiredRule } from '@/app/helpers/validation'
 import Link from 'next/link'
 import React from 'react'
-import App from './App'
 import ReactDOM from 'react-dom';
 import { BrowserRouter } from 'react-router-dom';
 import '@/app/globals.css';
-import Login from './auth/login/page'
 
 function HomePage()
 {
     return(
         <html>
             <body>
-                <Login />
+                <div>
+                    <Link href='/GestioneLibretto'>Test Gestione Libretto</Link>
+                </div>
             </body>
         </html>
-    )
+    );
 }
 
 export default HomePage;

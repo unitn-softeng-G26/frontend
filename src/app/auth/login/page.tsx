@@ -1,20 +1,16 @@
 'use client'
 import { getAntdFieldRequiredRule } from '@/app/helpers/validation'
 import { Button, Form } from 'antd'
-import React, { ChangeEvent } from 'react'
-import Router from 'next/router';
+import React, { CSSProperties, ChangeEvent } from 'react'
+import Router, { useRouter } from 'next/navigation';
 import Image from 'next/image';
 import axios from 'axios';
 import {useState} from 'react';
 import Input from 'antd/es/input/Input';
+import { useNavigate } from 'react-router-dom';
 
-interface loginRequest
-{
-    email: string;
-    password: string;
-}
 
-function Login() {
+const Login: React.FC = () => {
     return (
         <div className="mainDiv">
          
@@ -30,6 +26,7 @@ function Login() {
 function LoginForm()
 {
     //newAdds
+    const router = useRouter();
     const [username, setUsername] = useState('');
     const [password, setPassword] = useState('');
 
@@ -43,18 +40,28 @@ function LoginForm()
     
     const handleLogin = async () => {
         try{
-            const response = await axios.post('https://ci4.pesaventofilippo.com/api/v1/login', {    username: username,
+            const response = await axios.post('https://corsproxy.io/?https%3A%2F%2Fci4.pesaventofilippo.com%2Fapi%2Fv1%2Flogin', {    username: username,
             password: password
             
+            
         });
-        console.log("Risposta del server: ",response.data);
+        const messageError = document.getElementById('errorMsg');
+            if (messageError) {
+                messageError.style.display = 'none';
+              }
+              console.log("token ricevuto: ", response.data.token);
+        router.push('HomePage');
+
         }catch(error)
         {
-            console.error("Errore durante il login: ",error);
+            const messageError = document.getElementById('errorMsg');
+            if (messageError) {
+                messageError.style.display = 'block';
+              }
+            console.log("Errore riscontrato: ", error);
         }
-        console.log('username: ',username, " e password: ", password);
     };
-
+    const errorStyle: CSSProperties ={color: 'red', display: 'none'}; 
     //const onLog = (values: loginRequest) => {console.log(values)};
     return (
         <Form className = 'gap-5' itemID = 'loginForm' layout = 'vertical' /*onFinish={onLog}*/>
@@ -69,6 +76,7 @@ function LoginForm()
             <Button className ='loginBtn' type = 'primary' htmlType = 'submit' onClick={handleLogin} block>
                 Login
             </Button>
+            <p id= "errorMsg" style = {errorStyle}> Credenziali errate, riprovare </p>
         </Form>
     )
 
@@ -91,3 +99,13 @@ function LoggingIn()
         };
 }*/
 export default Login;
+function handleRedirect (data: string){
+    const navigate = useNavigate();
+    navigate('/app/HomePage');
+};
+/*
+
+Indirizzo per la prova locale: https://corsproxy.io/?https%3A%2F%2Fci4.pesaventofilippo.com%2Fapi%2Fv1%2Flogin
+Indirizzo originale: https://ci4.pesaventofilippo.com/api/v1/login
+
+*/ 
