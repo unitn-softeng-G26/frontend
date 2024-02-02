@@ -31,7 +31,7 @@ function viewLibrettoComp()
         }
       } catch (error) {
         if (axios.isAxiosError(error) && error.response?.status === 404) {
-          //router.replace('/GestioneLibretto/CompilazioneLibretto');
+          router.replace('/GestioneLibretto/CompilazioneLibretto');
         } else {
           console.error('Errore nel recupero del libretto:', error);
         }
