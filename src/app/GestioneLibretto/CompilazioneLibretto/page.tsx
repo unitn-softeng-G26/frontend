@@ -135,3 +135,11 @@ export default LibCompiler;
 //link per i corsi: https://ci4.pesaventofilippo.com/api/v1/corsi
 
 //link per il libretto: https://ci4.pesaventofilippo.com/api/v1/libretto
+
+//_________
+
+//lik per le modifiche locali: 
+
+//Link per i corsi: https://corsproxy.io/?https%3A%2F%2Fci4.pesaventofilippo.com%2Fapi%2Fv1%2Fcorsi
+
+//link per il libretto: https://corsproxy.io/?https%3A%2F%2Fci4.pesaventofilippo.com%2Fapi%2Fv1%2Flibretto

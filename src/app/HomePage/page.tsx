@@ -12,7 +12,9 @@ function HomePage()
         <html>
             <body>
                 <div>
-                    <Link href='/GestioneLibretto'>Test Gestione Libretto</Link>
+                    <Link href='/GestioneLibretto'>Gestione Libretto</Link>
+                    <br />
+                    <Link href='/VisualizzazioneAppelli'>Visualizza gli appelli</Link>
                 </div>
             </body>
         </html>
