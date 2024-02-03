@@ -94,7 +94,7 @@ const AppelliList: React.FC = () => {
     try {
       const response = await axios.post(
         'https://ci4.pesaventofilippo.com/api/v1/appelli/iscrizione',
-        { appello: appelloId },
+        { id: appelloId },
         { headers: { 'Content-Type': 'application/json' } }
       );
       // Aggiorna la lista degli appelli dopo l'iscrizione
@@ -121,7 +121,7 @@ const AppelliList: React.FC = () => {
     try {
       const response = await axios.delete(
         'https://ci4.pesaventofilippo.com/api/v1/appelli/iscrizione',
-        { data: { appello: appelloId }}
+        { data: { id: appelloId }}
       );
       // Aggiorna la lista degli appelli dopo la cancellazione dell'iscrizione
       fetchData();
