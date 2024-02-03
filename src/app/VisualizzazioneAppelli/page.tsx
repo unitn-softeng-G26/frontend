@@ -102,7 +102,16 @@ const AppelliList: React.FC = () => {
       const nuovoMessaggioIscrizione = { ...messaggiIscrizione, [messageId]: response.data.message };
       setMessaggiIscrizione(nuovoMessaggioIscrizione);
     } catch (error) {
-      console.error(`Errore durante l'iscrizione all'appello ${appelloId}:`, error);
+      if (axios.isAxiosError(error)) {
+        const response = error.response;
+        if (response?.status === 400) {
+          console.error('Errore 400 - Dettagli:', response.data || response.statusText);
+        } else {
+          console.error('Errore durante la richiesta:', response?.data || error.message);
+        }
+      } else {
+        console.error('Errore generico:', error);
+      }
       const nuovoMessaggioIscrizione = { ...messaggiIscrizione, [messageId]: 'Errore durante l\'iscrizione' };
       setMessaggiIscrizione(nuovoMessaggioIscrizione);
     }
@@ -119,7 +128,16 @@ const AppelliList: React.FC = () => {
       const nuovoMessaggioIscrizione = { ...messaggiIscrizione, [messageId]: response.data.message };
       setMessaggiIscrizione(nuovoMessaggioIscrizione);
     } catch (error) {
-      console.error(`Errore durante la cancellazione dell'iscrizione all'appello ${appelloId}:`, error);
+      if (axios.isAxiosError(error)) {
+        const response = error.response;
+        if (response?.status === 400) {
+          console.error('Errore 400 - Dettagli:', response.data || response.statusText);
+        } else {
+          console.error('Errore durante la richiesta:', response?.data || error.message);
+        }
+      } else {
+        console.error('Errore generico:', error);
+      }
       const nuovoMessaggioIscrizione = { ...messaggiIscrizione, [messageId]: 'Errore durante la cancellazione dell\'iscrizione' };
       setMessaggiIscrizione(nuovoMessaggioIscrizione);
     }
