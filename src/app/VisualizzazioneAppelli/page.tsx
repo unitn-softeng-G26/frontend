@@ -81,6 +81,8 @@ const AppelliList: React.FC = () => {
   );
 };
 
+export default AppelliList;
+
 /*
 const AppelliList: React.FC = () => {
   const [appelli, setAppelli] = useState([]);
