@@ -37,7 +37,7 @@ const AppelliList: React.FC = () => {
     // Funzione per ottenere gli appelli in base agli ID dei corsi
     const fetchAppelli = async (corsiIds: number[]) => {
       try {
-        const queryParams = corsiIds.map(id => `corsi[]=${id}`).join('&');
+        const queryParams = corsiIds.map(id => `corso[]=${id}`).join('&');
         const apiUrl = `https://ci4.pesaventofilippo.com/api/v1/appelli?${queryParams}`;
         const response = await axios.get(apiUrl);
         setAppelli(response.data.appelli);
