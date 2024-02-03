@@ -90,42 +90,38 @@ const AppelliList: React.FC = () => {
     }
   }, [corsi]);
 
-  const iscrivitiAdAppello = async (appelloId: number) => {
+  const iscrivitiAdAppello = async (appelloId: number, messageId: string) => {
     try {
       const response = await axios.post(
         'https://ci4.pesaventofilippo.com/api/v1/appelli/iscrizione',
-        { id: appelloId },
+        { appello: appelloId },
         { headers: { 'Content-Type': 'application/json' } }
       );
       // Aggiorna la lista degli appelli dopo l'iscrizione
       fetchData();
-      const nuovoMessaggioIscrizione = { ...messaggiIscrizione, [idProgressivo.toString()]: response.data.message };
+      const nuovoMessaggioIscrizione = { ...messaggiIscrizione, [messageId]: response.data.message };
       setMessaggiIscrizione(nuovoMessaggioIscrizione);
-      idProgressivo++;
     } catch (error) {
       console.error(`Errore durante l'iscrizione all'appello ${appelloId}:`, error);
-      const nuovoMessaggioIscrizione = { ...messaggiIscrizione, [idProgressivo.toString()]: 'Errore durante l\'iscrizione' };
+      const nuovoMessaggioIscrizione = { ...messaggiIscrizione, [messageId]: 'Errore durante l\'iscrizione' };
       setMessaggiIscrizione(nuovoMessaggioIscrizione);
-      idProgressivo++;
     }
   };
 
-  const cancellaIscrizioneAdAppello = async (appelloId: number) => {
+  const cancellaIscrizioneAdAppello = async (appelloId: number, messageId: string) => {
     try {
       const response = await axios.delete(
         'https://ci4.pesaventofilippo.com/api/v1/appelli/iscrizione',
-        { data: { id: appelloId }, headers: { 'Content-Type': 'application/json' } }
+        { data: { appello: appelloId }}
       );
       // Aggiorna la lista degli appelli dopo la cancellazione dell'iscrizione
       fetchData();
-      const nuovoMessaggioIscrizione = { ...messaggiIscrizione, [idProgressivo.toString()]: response.data.message };
+      const nuovoMessaggioIscrizione = { ...messaggiIscrizione, [messageId]: response.data.message };
       setMessaggiIscrizione(nuovoMessaggioIscrizione);
-      idProgressivo++;
     } catch (error) {
       console.error(`Errore durante la cancellazione dell'iscrizione all'appello ${appelloId}:`, error);
-      const nuovoMessaggioIscrizione = { ...messaggiIscrizione, [idProgressivo.toString()]: 'Errore durante la cancellazione dell\'iscrizione' };
+      const nuovoMessaggioIscrizione = { ...messaggiIscrizione, [messageId]: 'Errore durante la cancellazione dell\'iscrizione' };
       setMessaggiIscrizione(nuovoMessaggioIscrizione);
-      idProgressivo++;
     }
   };
 
@@ -145,13 +141,14 @@ const AppelliList: React.FC = () => {
           <tr key={appello.id}>
             {/* ... */}
             <td>
-              {isDataCorrenteCompresaTraDate(appello.data_inizio_iscrizione, appello.data_fine_iscrizione) && (
-                <>
-                  <button onClick={() => iscrivitiAdAppello(appello.id)}>Iscriviti</button>
-                  <button onClick={() => cancellaIscrizioneAdAppello(appello.id)}>Cancella Iscrizione</button>
-                  <p id={`messaggio-${idProgressivo}`}>{messaggiIscrizione[idProgressivo.toString()]}</p>
-                </>
-              )}
+            {isDataCorrenteCompresaTraDate(appello.data_inizio_iscrizione, appello.data_fine_iscrizione) && (
+                  <>
+                    <button onClick={() => iscrivitiAdAppello(appello.id, `messaggio-${idProgressivo}`)}>Iscriviti</button>
+                    <button onClick={() => cancellaIscrizioneAdAppello(appello.id, `messaggio-${idProgressivo}`)}>Cancella Iscrizione</button>
+                    <p id={`messaggio-${idProgressivo}`}>{messaggiIscrizione[idProgressivo.toString()]}</p>
+                    {idProgressivo++}
+                  </>
+                )}
             </td>
             {/* ... */}
           </tr>
