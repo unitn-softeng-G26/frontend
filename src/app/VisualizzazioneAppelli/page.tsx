@@ -21,7 +21,9 @@ interface Corso {
 const AppelliList: React.FC = () => {
   const [appelli, setAppelli] = useState<Appello[]>([]);
   const [corsi, setCorsi] = useState<Corso[]>([]);
-  const [messaggioIscrizione, setMessaggioIscrizione] = useState<string>('');
+  const [messaggiIscrizione, setMessaggiIscrizione] = useState<{ [key: string]: string }>({});
+
+  let idProgressivo = 0;
 
   const fetchData = async () => {
     try {
@@ -97,10 +99,14 @@ const AppelliList: React.FC = () => {
       );
       // Aggiorna la lista degli appelli dopo l'iscrizione
       fetchData();
-      setMessaggioIscrizione(response.data.message);
+      const nuovoMessaggioIscrizione = { ...messaggiIscrizione, [idProgressivo.toString()]: response.data.message };
+      setMessaggiIscrizione(nuovoMessaggioIscrizione);
+      idProgressivo++;
     } catch (error) {
       console.error(`Errore durante l'iscrizione all'appello ${appelloId}:`, error);
-      setMessaggioIscrizione('Errore durante l\'iscrizione');
+      const nuovoMessaggioIscrizione = { ...messaggiIscrizione, [idProgressivo.toString()]: 'Errore durante l\'iscrizione' };
+      setMessaggiIscrizione(nuovoMessaggioIscrizione);
+      idProgressivo++;
     }
   };
 
@@ -112,10 +118,14 @@ const AppelliList: React.FC = () => {
       );
       // Aggiorna la lista degli appelli dopo la cancellazione dell'iscrizione
       fetchData();
-      setMessaggioIscrizione(response.data.message);
+      const nuovoMessaggioIscrizione = { ...messaggiIscrizione, [idProgressivo.toString()]: response.data.message };
+      setMessaggiIscrizione(nuovoMessaggioIscrizione);
+      idProgressivo++;
     } catch (error) {
       console.error(`Errore durante la cancellazione dell'iscrizione all'appello ${appelloId}:`, error);
-      setMessaggioIscrizione('Errore durante la cancellazione dell\'iscrizione');
+      const nuovoMessaggioIscrizione = { ...messaggiIscrizione, [idProgressivo.toString()]: 'Errore durante la cancellazione dell\'iscrizione' };
+      setMessaggiIscrizione(nuovoMessaggioIscrizione);
+      idProgressivo++;
     }
   };
 
@@ -126,45 +136,29 @@ const AppelliList: React.FC = () => {
     return now >= dataInizioIscrizione && now <= dataFineIscrizione;
   };
 
-  return (
-    <div>
-      <h1>Appelli Disponibili</h1>
-      <table>
-        <thead>
-          <tr>
-            <th>ID</th>
-            <th>Data</th>
-            <th>Data Inizio Iscrizione</th>
-            <th>Data Fine Iscrizione</th>
-            <th>Aula</th>
-            <th>Azioni</th>
-            <th>Messaggio Iscrizione</th>
+  return (<div>
+    <h1>Appelli Disponibili</h1>
+    <table>
+      {/* ... */}
+      <tbody>
+        {appelli.map((appello) => (
+          <tr key={appello.id}>
+            {/* ... */}
+            <td>
+              {isDataCorrenteCompresaTraDate(appello.data_inizio_iscrizione, appello.data_fine_iscrizione) && (
+                <>
+                  <button onClick={() => iscrivitiAdAppello(appello.id)}>Iscriviti</button>
+                  <button onClick={() => cancellaIscrizioneAdAppello(appello.id)}>Cancella Iscrizione</button>
+                  <p id={`messaggio-${idProgressivo}`}>{messaggiIscrizione[idProgressivo.toString()]}</p>
+                </>
+              )}
+            </td>
+            {/* ... */}
           </tr>
-        </thead>
-        <tbody>
-          {appelli.map((appello) => (
-            <tr key={appello.id}>
-              <td>{appello.id}</td>
-              <td>{appello.data}</td>
-              <td>{appello.data_inizio_iscrizione}</td>
-              <td>{appello.data_fine_iscrizione}</td>
-              <td>{appello.aula}</td>
-              <td>
-                {isDataCorrenteCompresaTraDate(appello.data_inizio_iscrizione, appello.data_fine_iscrizione) && (
-                  <>
-                    <button onClick={() => iscrivitiAdAppello(appello.id)}>Iscriviti</button>
-                    <button onClick={() => cancellaIscrizioneAdAppello(appello.id)}>Cancella Iscrizione</button>
-                  </>
-                )}
-              </td>
-              <td>
-                <p>{messaggioIscrizione}</p>
-              </td>
-            </tr>
-          ))}
-        </tbody>
-      </table>
-    </div>
+        ))}
+      </tbody>
+    </table>
+  </div>
   );
 };
 
