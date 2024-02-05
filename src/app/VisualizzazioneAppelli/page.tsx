@@ -105,7 +105,7 @@ const AppelliList: React.FC = () => {
         { headers: { 'Content-Type': 'application/json' } }
       );
       // Aggiorna la lista degli appelli dopo l'iscrizione
-      fetchData();
+      //fetchData();
       const nuovoMessaggioIscrizione = { ...messaggiIscrizione, [messageId]: response.data.message };
       setMessaggiIscrizione(nuovoMessaggioIscrizione);
       
@@ -151,7 +151,7 @@ const cancellaIscrizioneAdAppello = async (appelloId: number, messageId: string)
         { data: { id: appelloId }}
       );
       // Aggiorna la lista degli appelli dopo la cancellazione dell'iscrizione
-      fetchData();
+      //fetchData();
       const nuovoMessaggioIscrizione = { ...messaggiIscrizione, [messageId]: response.data.message };
       setMessaggiIscrizione(nuovoMessaggioIscrizione);
 
