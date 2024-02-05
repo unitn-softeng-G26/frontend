@@ -97,6 +97,7 @@ const AppelliList: React.FC = () => {
   }, [corsi]);
 
   const iscrivitiAdAppello = async (appelloId: number, messageId: string) => {
+    console.log(`messaggio-${appelloId}`);
     try {
       const response = await axios.post(
         'https://ci4.pesaventofilippo.com/api/v1/appelli/iscrizione',
@@ -143,6 +144,7 @@ const AppelliList: React.FC = () => {
   };
 
   const cancellaIscrizioneAdAppello = async (appelloId: number, messageId: string) => {
+    console.log(`messaggio-${appelloId}`);
     try {
       const response = await axios.delete(
         'https://ci4.pesaventofilippo.com/api/v1/appelli/iscrizione',
