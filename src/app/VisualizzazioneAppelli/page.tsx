@@ -207,12 +207,11 @@ const AppelliList: React.FC = () => {
             {/* ... */}
             <td>
             {isDataCorrenteCompresaTraDate(appello.data_inizio_iscrizione, appello.data_fine_iscrizione) && (
-                  <>
-                    <button onClick={() => iscrivitiAdAppello(appello.id, `messaggio-${idProgressivo}`)}>Iscriviti</button>
-                    <button onClick={() => cancellaIscrizioneAdAppello(appello.id, `messaggio-${idProgressivo}`)}>Cancella Iscrizione</button>
-                    <p id={`messaggio-${idProgressivo}`}></p>
-                    {idProgressivo++}
-                  </>
+                <>
+                <button onClick={() => iscrivitiAdAppello(appello.id, `messaggio-${appello.id}`)}>Iscriviti</button>
+                <button onClick={() => cancellaIscrizioneAdAppello(appello.id, `messaggio-${appello.id}`)}>Cancella Iscrizione</button>
+                <p id={`messaggio-${appello.id}`}></p>
+                </>
                 )}
             </td>
             {/* ... */}
