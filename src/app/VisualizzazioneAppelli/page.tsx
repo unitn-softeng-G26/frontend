@@ -221,7 +221,8 @@ const cancellaIscrizioneAdAppello = async (appelloId: number, messageId: string)
               <td>{appello.data_inizio_iscrizione}</td>
               <td>{appello.data_fine_iscrizione}</td>
               <td>{appello.aula}
-              <br />
+            </td>
+            <br />
             {isDataCorrenteCompresaTraDate(appello.data_inizio_iscrizione, appello.data_fine_iscrizione) && (
                 <>
                 <button onClick={() => iscrivitiAdAppello(appello.id, `messaggio-${appello.id}`)}>Iscriviti</button>
@@ -229,7 +230,6 @@ const cancellaIscrizioneAdAppello = async (appelloId: number, messageId: string)
                 <p id={`messaggio-${appello.id}`}></p>
                 </>
                 )}
-            </td>
             {/* ... */}
           </tr>
         ))}
