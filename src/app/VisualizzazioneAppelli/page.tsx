@@ -207,6 +207,7 @@ const cancellaIscrizioneAdAppello = async (appelloId: number, messageId: string)
             <th>Data Inizio Iscrizione</th>
             <th>Data Fine Iscrizione</th>
             <th>Aula</th>
+            <th>Azioni</th>
           </tr>
         </thead>
       {/* ... */}
