@@ -196,51 +196,47 @@ const cancellaIscrizioneAdAppello = async (appelloId: number, messageId: string)
 
   return (
     <html>
-    <body>
-    <div>
-    <h1>Appelli Disponibili</h1>
-    <table>
-    <thead>
-          <tr>
-            <th>ID</th>
-            <th>Data</th>
-            <th>Data Inizio Iscrizione</th>
-            <th>Data Fine Iscrizione</th>
-            <th>Aula</th>
-          </tr>
-        </thead>
-      {/* ... */}
-      <tbody>
-        {appelli.map((appello) => (
-          <tr key={appello.id}>
-            {/* ... */}
-            {isDataCorrenteCompresaTraDate(appello.data_inizio_iscrizione, appello.data_fine_iscrizione) && (
-                <>
-                <tr>
-                    <td>{appello.id}</td>
-                    <td>{appello.data}</td>
-                    <td>{appello.data_inizio_iscrizione}</td>
-                    <td>{appello.data_fine_iscrizione}</td>
-                    <td>{appello.aula}</td>
+      <body>
+        <div>
+          <h1>Appelli Disponibili</h1>
+          <table>
+            <thead>
+              <tr>
+                <th>ID</th>
+                <th>Data Appello</th>
+                <th>Data Inizio Iscrizione</th>
+                <th>Data Fine Iscrizione</th>
+                <th>Aula</th>
+                <th>Azioni</th>
+              </tr>
+            </thead>
+            <tbody>
+              {appelli.map((appello) => (
+                <tr key={appello.id}>
+                  <td>{appello.id}</td>
+                  <td>{appello.data}</td>
+                  <td>{appello.data_inizio_iscrizione}</td>
+                  <td>{appello.data_fine_iscrizione}</td>
+                  <td>{appello.aula}</td>
+                  <td>
+                    {isDataCorrenteCompresaTraDate(appello.data_inizio_iscrizione, appello.data_fine_iscrizione) && (
+                      <>
+                        <button onClick={() => iscrivitiAdAppello(appello.id, `messaggio-${appello.id}`)}>Iscriviti</button>
+                        <button onClick={() => cancellaIscrizioneAdAppello(appello.id, `messaggio-${appello.id}`)}>Cancella Iscrizione</button>
+                        <p id={`messaggio-${appello.id}`}></p>
+                      </>
+                    )}
+                  </td>
                 </tr>
-                <tr>
-                  <button onClick={() => iscrivitiAdAppello(appello.id, `messaggio-${appello.id}`)}>Iscriviti</button>
-                  <button onClick={() => cancellaIscrizioneAdAppello(appello.id, `messaggio-${appello.id}`)}>Cancella Iscrizione</button>
-                  <p id={`messaggio-${appello.id}`}></p>
-                </tr>
-                </>
-                )}
-            {/* ... */}
-          </tr>
-        ))}
-      </tbody>
-    </table>
-  </div>
-  <div>
-    <button onClick={handleGoBack}>Torna Indietro</button>
-  </div>
-  </body>
-  </html>
+              ))}
+            </tbody>
+          </table>
+        </div>
+        <div>
+          <button onClick={handleGoBack}>Torna Indietro</button>
+        </div>
+      </body>
+    </html>
   );
 };
 
