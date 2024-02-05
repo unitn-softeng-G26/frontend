@@ -207,7 +207,6 @@ const cancellaIscrizioneAdAppello = async (appelloId: number, messageId: string)
             <th>Data Inizio Iscrizione</th>
             <th>Data Fine Iscrizione</th>
             <th>Aula</th>
-            <th>Azioni</th>
           </tr>
         </thead>
       {/* ... */}
@@ -225,9 +224,9 @@ const cancellaIscrizioneAdAppello = async (appelloId: number, messageId: string)
                     <td>{appello.aula}</td>
                 </tr>
                 <tr>
-                <button onClick={() => iscrivitiAdAppello(appello.id, `messaggio-${appello.id}`)}>Iscriviti</button>
-                <button onClick={() => cancellaIscrizioneAdAppello(appello.id, `messaggio-${appello.id}`)}>Cancella Iscrizione</button>
-                <p id={`messaggio-${appello.id}`}></p>
+                  <button onClick={() => iscrivitiAdAppello(appello.id, `messaggio-${appello.id}`)}>Iscriviti</button>
+                  <button onClick={() => cancellaIscrizioneAdAppello(appello.id, `messaggio-${appello.id}`)}>Cancella Iscrizione</button>
+                  <p id={`messaggio-${appello.id}`}></p>
                 </tr>
                 </>
                 )}
