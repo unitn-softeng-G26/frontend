@@ -141,9 +141,9 @@ const AppelliList: React.FC = () => {
         console.error('Elemento non trovato con id: ', messageId);
       }
     }
-  };
+};
 
-  const cancellaIscrizioneAdAppello = async (appelloId: number, messageId: string) => {
+const cancellaIscrizioneAdAppello = async (appelloId: number, messageId: string) => {
     console.log(`messaggio-${appelloId}`);
     try {
       const response = await axios.delete(
@@ -185,7 +185,7 @@ const AppelliList: React.FC = () => {
         console.error('Elemento non trovato con id: ', messageId);
       }
     }
-  };
+};
 
   const isDataCorrenteCompresaTraDate = (dataInizio: string, dataFine: string): boolean => {
     const now = new Date();
