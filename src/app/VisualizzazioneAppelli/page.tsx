@@ -107,6 +107,16 @@ const AppelliList: React.FC = () => {
       fetchData();
       const nuovoMessaggioIscrizione = { ...messaggiIscrizione, [messageId]: response.data.message };
       setMessaggiIscrizione(nuovoMessaggioIscrizione);
+      
+      const statusMsgElement = document.getElementById(messageId);
+
+      if (statusMsgElement) {
+          statusMsgElement.style.color = 'black';
+        statusMsgElement.innerText = 'Iscrizione effettuata con successo';
+      } else {
+        console.error('Elemento non trovato con id "statusMsg"');
+      }
+
     } catch (error) {
       if (axios.isAxiosError(error)) {
         const response = error.response;
@@ -120,6 +130,15 @@ const AppelliList: React.FC = () => {
       }
       const nuovoMessaggioIscrizione = { ...messaggiIscrizione, [messageId]: 'Errore durante l\'iscrizione' };
       setMessaggiIscrizione(nuovoMessaggioIscrizione);
+
+      const statusMsgElement = document.getElementById(messageId);
+
+      if (statusMsgElement) {
+          statusMsgElement.style.color = 'red';
+        statusMsgElement.innerText = 'Errore durante la procedura di iscrizione a questo appello';
+      } else {
+        console.error('Elemento non trovato con id "statusMsg"');
+      }
     }
   };
 
@@ -133,6 +152,15 @@ const AppelliList: React.FC = () => {
       fetchData();
       const nuovoMessaggioIscrizione = { ...messaggiIscrizione, [messageId]: response.data.message };
       setMessaggiIscrizione(nuovoMessaggioIscrizione);
+
+      const statusMsgElement = document.getElementById(messageId);
+
+      if (statusMsgElement) {
+          statusMsgElement.style.color = 'black';
+        statusMsgElement.innerText = "La procedura di annullamento iscrizione è andata a buon fine";
+      } else {
+        console.error('Elemento non trovato con id "statusMsg"');
+      }
     } catch (error) {
       if (axios.isAxiosError(error)) {
         const response = error.response;
@@ -146,6 +174,14 @@ const AppelliList: React.FC = () => {
       }
       const nuovoMessaggioIscrizione = { ...messaggiIscrizione, [messageId]: 'Errore durante la cancellazione dell\'iscrizione' };
       setMessaggiIscrizione(nuovoMessaggioIscrizione);
+      const statusMsgElement = document.getElementById(messageId);
+
+      if (statusMsgElement) {
+          statusMsgElement.style.color = 'red';
+        statusMsgElement.innerText = 'Errore durante la procedura di annullamento iscrizione';
+      } else {
+        console.error('Elemento non trovato con id "statusMsg"');
+      }
     }
   };
 
@@ -172,7 +208,7 @@ const AppelliList: React.FC = () => {
                   <>
                     <button onClick={() => iscrivitiAdAppello(appello.id, `messaggio-${idProgressivo}`)}>Iscriviti</button>
                     <button onClick={() => cancellaIscrizioneAdAppello(appello.id, `messaggio-${idProgressivo}`)}>Cancella Iscrizione</button>
-                    <p id={`messaggio-${idProgressivo}`}>{messaggiIscrizione[idProgressivo.toString()]}</p>
+                    <p id={`messaggio-${idProgressivo}`}></p>
                     {idProgressivo++}
                   </>
                 )}
