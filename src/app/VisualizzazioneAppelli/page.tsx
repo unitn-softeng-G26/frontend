@@ -200,6 +200,16 @@ const cancellaIscrizioneAdAppello = async (appelloId: number, messageId: string)
     <div>
     <h1>Appelli Disponibili</h1>
     <table>
+    <thead>
+          <tr>
+            <th>ID</th>
+            <th>Data</th>
+            <th>Data Inizio Iscrizione</th>
+            <th>Data Fine Iscrizione</th>
+            <th>Aula</th>
+            <th>Azioni</th>
+          </tr>
+        </thead>
       {/* ... */}
       <tbody>
         {appelli.map((appello) => (
