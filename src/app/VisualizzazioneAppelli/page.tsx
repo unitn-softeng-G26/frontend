@@ -218,7 +218,7 @@ const cancellaIscrizioneAdAppello = async (appelloId: number, messageId: string)
             {isDataCorrenteCompresaTraDate(appello.data_inizio_iscrizione, appello.data_fine_iscrizione) && (
                 <>
                 <td>
-                    {appello.id}</td>
+                    <td></td>{appello.id}</td>
                     <td>{appello.data}</td>
                     <td>{appello.data_inizio_iscrizione}</td>
                     <td>{appello.data_fine_iscrizione}</td>
