@@ -210,8 +210,8 @@ const AppelliList: React.FC = () => {
                   <>
                     <button onClick={() => iscrivitiAdAppello(appello.id, `messaggio-${idProgressivo}`)}>Iscriviti</button>
                     <button onClick={() => cancellaIscrizioneAdAppello(appello.id, `messaggio-${idProgressivo}`)}>Cancella Iscrizione</button>
-                    <p id={`messaggio-${idProgressivo}`}>{`messaggio-${idProgressivo}`}</p>
-                    {idProgressivo++}
+                    <p id={`messaggio-${idProgressivo}`}></p>
+                    {idProgressivo = idProgressivo + 1}
                   </>
                 )}
             </td>
