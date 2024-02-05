@@ -14,7 +14,9 @@ function viewLibrettoComp()
 {
     const router = useRouter();
     const [corsi, setCorsi] = useState<Corso[]>([]);
-
+    const handleGoBack = () => {
+        router.back(); // Torna indietro nella cronologia di navigazione
+      };
   useEffect(() => {
     // Funzione per ottenere i corsi dall'API
     const getCorsi = async () => {
@@ -43,6 +45,8 @@ function viewLibrettoComp()
   }, []); // L'array vuoto come secondo argomento assicura che useEffect venga eseguito solo al mount
 
   return (
+    <html>
+      <body>
     <div>
       <h1>Elenco Corsi</h1>
       <table>
@@ -64,6 +68,11 @@ function viewLibrettoComp()
         </tbody>
       </table>
     </div>
+        <div>
+          <button onClick={handleGoBack}>Torna Indietro</button>
+        </div>
+    </body>
+    </html>
   );
 }
 

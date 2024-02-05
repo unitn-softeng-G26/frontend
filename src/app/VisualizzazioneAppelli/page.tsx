@@ -3,6 +3,7 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import '@/app/globals.css';
+import Router, { useRouter } from 'next/navigation';
 
 interface Appello {
   id: number;
@@ -22,6 +23,11 @@ const AppelliList: React.FC = () => {
   const [appelli, setAppelli] = useState<Appello[]>([]);
   const [corsi, setCorsi] = useState<Corso[]>([]);
   const [messaggiIscrizione, setMessaggiIscrizione] = useState<{ [key: string]: string }>({});
+
+  const router = useRouter();
+    const handleGoBack = () => {
+        router.back(); // Torna indietro nella cronologia di navigazione
+      };
 
   let idProgressivo = 0;
 
@@ -150,7 +156,10 @@ const AppelliList: React.FC = () => {
     return now >= dataInizioIscrizione && now <= dataFineIscrizione;
   };
 
-  return (<div>
+  return (
+    <html>
+    <body>
+    <div>
     <h1>Appelli Disponibili</h1>
     <table>
       {/* ... */}
@@ -174,6 +183,11 @@ const AppelliList: React.FC = () => {
       </tbody>
     </table>
   </div>
+  <div>
+    <button onClick={handleGoBack}>Torna Indietro</button>
+  </div>
+  </body>
+  </html>
   );
 };
 

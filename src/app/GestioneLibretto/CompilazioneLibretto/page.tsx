@@ -14,6 +14,10 @@ const LibCompiler: React.FC = () => {
   const [corsiDisponibili, setCorsiDisponibili] = useState<Corso[]>([]);
   const [corsiNelLibretto, setCorsiNelLibretto] = useState<Corso[]>([]);
   const [totalCrediti, setTotalCrediti] = useState<number>(0);
+  const router = useRouter();
+    const handleGoBack = () => {
+        router.back(); // Torna indietro nella cronologia di navigazione
+      };
 
   useEffect(() => {
     const fetchCorsi = async () => {
@@ -72,6 +76,14 @@ const LibCompiler: React.FC = () => {
     // Verifica se il totale dei crediti è uguale a 180
     if (totalCrediti === 180) {
       // Estrai solo gli ID dei corsi nel libretto
+      const statusMsgElement = document.getElementById('statusMsg');
+
+      if (statusMsgElement) {
+          statusMsgElement.style.color = 'red';
+        statusMsgElement.innerText = 'Il libretto è stato salvato correttamente!';
+      } else {
+        console.error('Elemento non trovato con id "statusMsg"');
+      }
       const idCorsiNelLibretto = corsiNelLibretto.map((corso) => corso.id);
 
       try {
@@ -83,16 +95,27 @@ const LibCompiler: React.FC = () => {
 
         console.log('Chiamata POST effettuata con successo:', response.data);
         // Puoi gestire ulteriori azioni qui se necessario
+        router.back();
       } catch (error) {
         console.error('Errore nella chiamata POST:', error);
       }
     } else {
       console.log('Il totale dei crediti non è uguale a 180. Impossibile confermare il libretto.');
+      const statusMsgElement = document.getElementById('statusMsg');
+
+      if (statusMsgElement) {
+          statusMsgElement.style.color = 'red';
+        statusMsgElement.innerText = 'Il totale dei crediti non è uguale a 180. Impossibile confermare il libretto!';
+      } else {
+        console.error('Elemento non trovato con id "statusMsg"');
+      }
+      const idCorsiNelLibretto = corsiNelLibretto.map((corso) => corso.id);
     }
   };
 
   return (
-    
+    <html>
+      <body>
     <div>
       <div style={{ float: 'left', marginRight: '20px' }}>
         <h2>Corsi Disponibili</h2>
@@ -124,7 +147,12 @@ const LibCompiler: React.FC = () => {
       </div>
 
     </div>
-    
+    <div>
+       <button onClick={handleGoBack}>Torna Indietro</button>
+    </div>
+    <p id="statusMsg"></p>
+    </body>
+    </html>
   );
 };
 
