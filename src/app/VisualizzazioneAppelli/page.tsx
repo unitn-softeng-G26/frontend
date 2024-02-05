@@ -108,7 +108,7 @@ const AppelliList: React.FC = () => {
       const nuovoMessaggioIscrizione = { ...messaggiIscrizione, [messageId]: response.data.message };
       setMessaggiIscrizione(nuovoMessaggioIscrizione);
       
-      const statusMsgElement = document.getElementById(messageId);
+      const statusMsgElement = document.getElementById(`messaggio-${appelloId}`);
 
       if (statusMsgElement) {
           statusMsgElement.style.color = 'black';
@@ -131,7 +131,7 @@ const AppelliList: React.FC = () => {
       const nuovoMessaggioIscrizione = { ...messaggiIscrizione, [messageId]: 'Errore durante l\'iscrizione' };
       setMessaggiIscrizione(nuovoMessaggioIscrizione);
 
-      const statusMsgElement = document.getElementById(messageId);
+      const statusMsgElement = document.getElementById(`messaggio-${appelloId}`);
 
       if (statusMsgElement) {
           statusMsgElement.style.color = 'red';
@@ -153,7 +153,7 @@ const AppelliList: React.FC = () => {
       const nuovoMessaggioIscrizione = { ...messaggiIscrizione, [messageId]: response.data.message };
       setMessaggiIscrizione(nuovoMessaggioIscrizione);
 
-      const statusMsgElement = document.getElementById(messageId);
+      const statusMsgElement = document.getElementById(`messaggio-${appelloId}`);
 
       if (statusMsgElement) {
           statusMsgElement.style.color = 'black';
@@ -174,7 +174,7 @@ const AppelliList: React.FC = () => {
       }
       const nuovoMessaggioIscrizione = { ...messaggiIscrizione, [messageId]: 'Errore durante la cancellazione dell\'iscrizione' };
       setMessaggiIscrizione(nuovoMessaggioIscrizione);
-      const statusMsgElement = document.getElementById(messageId);
+      const statusMsgElement = document.getElementById(`messaggio-${appelloId}`);
 
       if (statusMsgElement) {
           statusMsgElement.style.color = 'red';
