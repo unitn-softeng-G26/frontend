@@ -33,7 +33,7 @@ const AppelliList: React.FC = () => {
 
   const fetchData = async () => {
     try {
-      const responseCorsi = await axios.get('https://corsproxy.io/?https%3A%2F%2Fci4.pesaventofilippo.com%2Fapi%2Fv1%2Flibretto');
+      const responseCorsi = await axios.get('https://ci4.pesaventofilippo.com/api/v1/libretto');
       setCorsi(responseCorsi.data.corsi);
 
       const appelliPerCorsi = await Promise.all(
@@ -114,7 +114,7 @@ const AppelliList: React.FC = () => {
           statusMsgElement.style.color = 'black';
         statusMsgElement.innerText = 'Iscrizione effettuata con successo';
       } else {
-        console.error('Elemento non trovato con id "statusMsg"');
+        console.error('Elemento non trovato con id: ', messageId);
       }
 
     } catch (error) {
@@ -137,7 +137,7 @@ const AppelliList: React.FC = () => {
           statusMsgElement.style.color = 'red';
         statusMsgElement.innerText = 'Errore durante la procedura di iscrizione a questo appello';
       } else {
-        console.error('Elemento non trovato con id "statusMsg"');
+        console.error('Elemento non trovato con id: ', messageId);
       }
     }
   };
@@ -159,7 +159,7 @@ const AppelliList: React.FC = () => {
           statusMsgElement.style.color = 'black';
         statusMsgElement.innerText = "La procedura di annullamento iscrizione è andata a buon fine";
       } else {
-        console.error('Elemento non trovato con id "statusMsg"');
+        console.error('Elemento non trovato con id: ', messageId);
       }
     } catch (error) {
       if (axios.isAxiosError(error)) {
@@ -180,7 +180,7 @@ const AppelliList: React.FC = () => {
           statusMsgElement.style.color = 'red';
         statusMsgElement.innerText = 'Errore durante la procedura di annullamento iscrizione';
       } else {
-        console.error('Elemento non trovato con id "statusMsg"');
+        console.error('Elemento non trovato con id: ', messageId);
       }
     }
   };
@@ -208,7 +208,7 @@ const AppelliList: React.FC = () => {
                   <>
                     <button onClick={() => iscrivitiAdAppello(appello.id, `messaggio-${idProgressivo}`)}>Iscriviti</button>
                     <button onClick={() => cancellaIscrizioneAdAppello(appello.id, `messaggio-${idProgressivo}`)}>Cancella Iscrizione</button>
-                    <p id={`messaggio-${idProgressivo}`}></p>
+                    <p id={`messaggio-${idProgressivo}`}>{`messaggio-${idProgressivo}`}</p>
                     {idProgressivo++}
                   </>
                 )}
@@ -233,3 +233,4 @@ export default AppelliList;
 //Link cors proxy: https://corsproxy.io/?https%3A%2F%2Fci4.pesaventofilippo.com%2Fapi%2Fv1%2Fappelli
 //Link per pubblicazione: https://ci4.pesaventofilippo.com/api/v1/appelli
 //Link per le iscrizioni/ disiscrizioni: https://ci4.pesaventofilippo.com/api/v1/appelli/iscrizione
+//Link per il libretto: https://ci4.pesaventofilippo.com/api/v1/libretto
