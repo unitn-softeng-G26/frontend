@@ -49,9 +49,9 @@ function viewLibrettoComp()
     <html>
       <body>
         <div className='mainDiv'>
-      <div className='secondaryContainer' >
-      <Image src="/ci4_logo_homepage.png" alt='logo ci4' width={128} height={69} /><br />
+        <Image src="/ci4_logo_homepage.png" alt='logo ci4' width={128} height={69} /><br />
         <h1>Ci4{'>'}HomePage{'>'}GestioneLibretto{'>'}VisualizzaLibretto</h1>
+      <div className='secondaryContainer' >
         <h3>Elenco Corsi</h3>
         <table>
           <thead>
