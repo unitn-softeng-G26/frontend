@@ -107,6 +107,11 @@ className
   text-align: center;
 }
 
+.secondaryContainer
+{
+  text-align: center;
+}
+
 table, th, td {
   border:1px solid black;
 }
