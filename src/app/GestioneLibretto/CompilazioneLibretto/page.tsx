@@ -117,9 +117,9 @@ const LibCompiler: React.FC = () => {
   return (
     <html>
       <body>
-      <Image src="/ci4_logo_homepage.png" alt='logo ci4' width={128} height={69} /><br />
-      <h1>Ci4{'>'}HomePage{'>'}GestioneLibretto{'>'}CompilazioneLibretto</h1>
         <div className='mainDiv'>
+        <Image src="/ci4_logo_homepage.png" alt='logo ci4' width={128} height={69} /><br />
+      <h1>Ci4{'>'}HomePage{'>'}GestioneLibretto{'>'}CompilazioneLibretto</h1>
           <p>Attenzione: la somma dei crediti data dai corsi presenti nel libretto deve essere uguale a 180</p>
     <div>
       <div style={{ float: 'left', marginRight: '20px', backgroundColor: 'lightslategray', color: 'black', padding: '5px'}}>
