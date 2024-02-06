@@ -3,6 +3,7 @@ import axios from 'axios';
 import React, { useState, useEffect } from 'react';
 import '@/app/globals.css';
 import Router, { useRouter } from 'next/navigation';
+import Image from 'next/image';
 
 interface Corso {
     id: number;
@@ -116,22 +117,29 @@ const LibCompiler: React.FC = () => {
   return (
     <html>
       <body>
+      <Image src="/ci4_logo_homepage.png" alt='logo ci4' width={128} height={69} /><br />
+      <h1>Ci4{'>'}HomePage{'>'}GestioneLibretto{'>'}CompilazioneLibretto</h1>
+        <div className='mainDiv'>
+          <p>Attenzione: la somma dei crediti data dai corsi presenti nel libretto deve essere uguale a 180</p>
     <div>
-      <div style={{ float: 'left', marginRight: '20px' }}>
+      <div style={{ float: 'left', marginRight: '20px', backgroundColor: 'lightslategray', color: 'black'}}>
         <h2>Corsi Disponibili</h2>
+        <div className='mainDiv'>
         <ul>
           {corsiDisponibili.map((corso) => (
             <li key={corso.id}>
               {corso.nome} - Crediti: {corso.crediti}
-              <button onClick={() => handleInserisci(corso)}>Inserisci</button>
+              <button className="insertBtn" onClick={() => handleInserisci(corso)}>Inserisci</button>
             </li>
           ))}
         </ul>
+        </div>
       </div>
 
-      <div style={{ float: 'left' }}>
+      <div style={{ float: 'left', marginRight: '20px', backgroundColor: 'lightslategray', color: 'black' }}>
         <h2>Corsi nel Libretto</h2>
         <p>Total Crediti: {totalCrediti}</p>
+        <div className='mainDiv'>
         <ul>
           {corsiNelLibretto.map((corso) => (
             <li key={corso.id}>
@@ -140,17 +148,19 @@ const LibCompiler: React.FC = () => {
             </li>
           ))}
         </ul>
+        </div>
       </div>
       
       <div style={{ clear: 'both', marginTop: '20px' }}>
-        <button onClick={handleConfermaLibretto}>Conferma Libretto</button>
+        <button className="commonButton" onClick={handleConfermaLibretto}>Conferma Libretto</button>
       </div>
 
     </div>
     <div>
-       <button onClick={handleGoBack}>Torna Indietro</button>
+       <button className="commonButton" onClick={handleGoBack}>Torna Indietro</button>
     </div>
     <p id="statusMsg"></p>
+    </div>
     </body>
     </html>
   );

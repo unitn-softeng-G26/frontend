@@ -3,6 +3,7 @@ import axios from 'axios';
 import React, { useState, useEffect } from 'react';
 import '@/app/globals.css';
 import Router, { useRouter } from 'next/navigation';
+import Image from 'next/image';
 
 interface Corso {
     id: number;
@@ -47,30 +48,34 @@ function viewLibrettoComp()
   return (
     <html>
       <body>
-    <div>
-      <h1>Elenco Corsi</h1>
-      <table>
-        <thead>
-          <tr>
-            <th>ID</th>
-            <th>Nome Corso</th>
-            <th>Crediti</th>
-          </tr>
-        </thead>
-        <tbody>
-          {corsi.map((corso) => (
-            <tr key={corso.id}>
-              <td>{corso.id}</td>
-              <td>{corso.nome}</td>
-              <td>{corso.crediti}</td>
+        <div className='mainDiv'>
+      <div>
+      <Image src="/ci4_logo_homepage.png" alt='logo ci4' width={128} height={69} /><br />
+        <h1>Ci4{'>'}HomePage{'>'}GestioneLibretto{'>'}VisualizzaLibretto</h1>
+        <h3>Elenco Corsi</h3>
+        <table>
+          <thead>
+            <tr>
+              <th>ID</th>
+              <th>Nome Corso</th>
+              <th>Crediti</th>
             </tr>
-          ))}
-        </tbody>
-      </table>
+          </thead>
+          <tbody>
+            {corsi.map((corso) => (
+              <tr key={corso.id}>
+                <td>{corso.id}</td>
+                <td>{corso.nome}</td>
+                <td>{corso.crediti}</td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
+          <div>
+            <button className="commonButton" onClick={handleGoBack}>Torna Indietro</button>
+          </div>
     </div>
-        <div>
-          <button onClick={handleGoBack}>Torna Indietro</button>
-        </div>
     </body>
     </html>
   );

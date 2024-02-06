@@ -29,10 +29,10 @@ function HomePage()
     return(
         <html>
             <body>
-                <div>
+                <div className="mainDiv">
                     <Image src="/ci4_logo_homepage.png" alt='logo ci4' width={128} height={69} />
-                    <h1>Ci4{'>'}HomePage</h1>
-                    <p>Benvenuto/a {displayName}</p>
+                    <h1>Ci4{'>'}HomePage</h1><br />
+                    <p>Benvenuto/a {displayName}</p><br />
                     <Link href='/GestioneLibretto'>Gestione Libretto</Link>
                     <br />
                     <Link href='/VisualizzazioneAppelli'>Visualizza gli appelli</Link>

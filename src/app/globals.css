@@ -89,6 +89,24 @@ className
   margin-top: 5px;
 }
 
+.commonButton
+{
+  background-color: lightslategray;
+  color: black;
+  border: 1px solid black;
+  border-radius: 5px;
+  text-align: center;
+}
+
+.insertBtn
+{
+  background-color: darkgrey;
+  color: black;
+  border: 1px solid black;
+  border-radius: 5px;
+  text-align: center;
+}
+
 table, th, td {
   border:1px solid black;
 }

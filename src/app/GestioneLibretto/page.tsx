@@ -5,6 +5,7 @@ import React from 'react'
 import ReactDOM from 'react-dom';
 import { useRouter } from 'next/navigation';
 import '@/app/globals.css';
+import Image from 'next/image';
 import axios from 'axios';
 
 function testLibretto()
@@ -17,12 +18,16 @@ function testLibretto()
     return(
         <html>
             <body>
-                <Link href="GestioneLibretto/VisualizzaLibretto">Cliccami per visualizzare il libretto</Link>
-                <br />
-                <Link href="GestioneLibretto/CompilazioneLibretto">Cliccami per effettuare una nuova compilazione</Link>
-                <br />
-                <div>
-                    <button onClick={handleGoBack}>Torna Indietro</button>
+                <div className='mainDiv'>
+                    <Image src="/ci4_logo_homepage.png" alt='logo ci4' width={128} height={69} /><br />
+                    <h1>Ci4{'>'}HomePage{'>'}GestioneLibretto</h1><br />
+                    <Link href="GestioneLibretto/VisualizzaLibretto">Clicca qui per visualizzare il tuo bretto</Link>
+                    <br />
+                    <Link href="GestioneLibretto/CompilazioneLibretto">Compila ora il tuo libretto</Link>
+                    <br />
+                    <div>
+                        <button className="commonButton" onClick={handleGoBack}>Torna Indietro</button>
+                    </div>
                 </div>
             </body>
         </html>

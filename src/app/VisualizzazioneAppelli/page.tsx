@@ -4,6 +4,7 @@ import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import '@/app/globals.css';
 import Router, { useRouter } from 'next/navigation';
+import Image from 'next/image';
 
 interface Appello {
   id: number;
@@ -197,8 +198,12 @@ const cancellaIscrizioneAdAppello = async (appelloId: number, messageId: string)
   return (
     <html>
       <body>
-        <div>
+        <div className='mainDiv' >
+        <Image src="/ci4_logo_homepage.png" alt='logo ci4' width={128} height={69} /><br />
+        <h1>Ci4{'>'}HomePage{'>'}GestioneLibretto{'>'}VisualizzazioneAppelli</h1>
+        <div style={{ float: 'left', marginRight: '20px', backgroundColor: 'lightslategray', color: 'black'}}>
           <h1>Appelli Disponibili</h1>
+          <div className='mainDiv'>
           <table>
             <thead>
               <tr>
@@ -221,8 +226,8 @@ const cancellaIscrizioneAdAppello = async (appelloId: number, messageId: string)
                   <td>
                     {isDataCorrenteCompresaTraDate(appello.data_inizio_iscrizione, appello.data_fine_iscrizione) && (
                       <>
-                        <button onClick={() => iscrivitiAdAppello(appello.id, `messaggio-${appello.id}`)}>Iscriviti</button>
-                        <button onClick={() => cancellaIscrizioneAdAppello(appello.id, `messaggio-${appello.id}`)}>Cancella Iscrizione</button>
+                        <button className='commonButton' onClick={() => iscrivitiAdAppello(appello.id, `messaggio-${appello.id}`)}>Iscriviti</button>
+                        <button className='commonButton' onClick={() => cancellaIscrizioneAdAppello(appello.id, `messaggio-${appello.id}`)}>Cancella Iscrizione</button>
                         <p id={`messaggio-${appello.id}`}></p>
                       </>
                     )}
@@ -231,9 +236,11 @@ const cancellaIscrizioneAdAppello = async (appelloId: number, messageId: string)
               ))}
             </tbody>
           </table>
+          </div>
         </div>
         <div>
-          <button onClick={handleGoBack}>Torna Indietro</button>
+          <button className='commonButton' onClick={handleGoBack}>Torna Indietro</button>
+        </div>
         </div>
       </body>
     </html>
