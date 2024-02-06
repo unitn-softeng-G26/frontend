@@ -123,7 +123,7 @@ const LibCompiler: React.FC = () => {
           <p>Attenzione: la somma dei crediti data dai corsi presenti nel libretto deve essere uguale a 180</p>
     <div>
       <div style={{ float: 'left', marginRight: '20px', backgroundColor: 'lightslategray', color: 'black', padding: '5px'}}>
-        <h2>Corsi Disponibili</h2>
+        <h2>Corsi Disponibili</h2><br />
         <div className='mainDiv'>
         <ul>
           {corsiDisponibili.map((corso) => (
@@ -138,7 +138,7 @@ const LibCompiler: React.FC = () => {
 
       <div style={{ float: 'left', marginRight: '20px', backgroundColor: 'lightslategray', color: 'black', padding: '5px' }}>
         <h2>Corsi nel Libretto</h2>
-        <p>Total Crediti: {totalCrediti}</p>
+        <p>Total Crediti: {totalCrediti}</p><br />
         <div className='mainDiv'>
         <ul>
           {corsiNelLibretto.map((corso) => (
