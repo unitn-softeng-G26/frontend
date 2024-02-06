@@ -136,7 +136,7 @@ const LibCompiler: React.FC = () => {
         </div>
       </div>
 
-      <div style={{ float: 'left', marginRight: '20px', backgroundColor: 'lightslategray', color: 'black' }}>
+      <div style={{ float: 'left', marginRight: '20px', backgroundColor: 'lightslategray', color: 'black', padding: '5px' }}>
         <h2>Corsi nel Libretto</h2>
         <p>Total Crediti: {totalCrediti}</p>
         <div className='mainDiv'>
